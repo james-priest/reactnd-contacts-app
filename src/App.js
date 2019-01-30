@@ -20,7 +20,9 @@ class App extends Component {
       })
     }));
 
-    ContactsAPI.remove(contact);
+    ContactsAPI.remove(contact).then(contact => {
+      console.log(contact); // <- removed contact
+    });
   };
   render() {
     return (
