@@ -19,6 +19,8 @@ class App extends Component {
         return c.id !== contact.id;
       })
     }));
+
+    ContactsAPI.remove(contact);
   };
   render() {
     return (
