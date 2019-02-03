@@ -32,10 +32,6 @@ class ListContacts extends Component {
     const { query } = this.state;
     const { contacts, onDeleteContact } = this.props;
 
-    // const showingContacts = contacts.filter(
-    //   contact => contact.name.toLowerCase().indexOf(query.toLowerCase()) > -1
-    // );
-
     const showingContacts =
       query === ''
         ? contacts
@@ -43,11 +39,6 @@ class ListContacts extends Component {
             contact.name.toLowerCase().includes(query.toLowerCase())
           );
 
-    // const showingContacts = contacts.filter(contact =>
-    //   contact.name.toLowerCase().includes(query.toLowerCase())
-    // );
-
-    // console.log('showingContacts', showingContacts);
     return (
       <div className="list-contacts">
         <div className="list-contacts-top">
