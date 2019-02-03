@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ListContacts extends Component {
   static propTypes = {
@@ -11,8 +12,7 @@ class ListContacts extends Component {
         avatarURL: PropTypes.string.isRequired
       })
     ),
-    onDeleteContact: PropTypes.func.isRequired,
-    onNavigate: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired
   };
   state = {
     query: ''
@@ -30,22 +30,22 @@ class ListContacts extends Component {
   };
   render() {
     const { query } = this.state;
-    const { contacts, onDeleteContact, onNavigate } = this.props;
+    const { contacts, onDeleteContact } = this.props;
 
     // const showingContacts = contacts.filter(
     //   contact => contact.name.toLowerCase().indexOf(query.toLowerCase()) > -1
     // );
 
-    // const showingContacts =
-    //   query === ''
-    //     ? contacts
-    //     : contacts.filter(contact =>
-    //         contact.name.toLowerCase().includes(query.toLowerCase())
-    //       );
+    const showingContacts =
+      query === ''
+        ? contacts
+        : contacts.filter(contact =>
+            contact.name.toLowerCase().includes(query.toLowerCase())
+          );
 
-    const showingContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(query.toLowerCase())
-    );
+    // const showingContacts = contacts.filter(contact =>
+    //   contact.name.toLowerCase().includes(query.toLowerCase())
+    // );
 
     // console.log('showingContacts', showingContacts);
     return (
@@ -58,13 +58,9 @@ class ListContacts extends Component {
             value={query}
             onChange={this.updateQuery}
           />
-          <a
-            href="#create"
-            onClick={() => onNavigate()}
-            className="add-contact"
-          >
+          <Link to="/create" className="add-contact">
             Add Contact
-          </a>
+          </Link>
         </div>
         {showingContacts.length !== contacts.length && (
           <div className="showing-contacts">
