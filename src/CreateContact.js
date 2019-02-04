@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import ImageInput from './ImageInput';
+import serializeForm from 'form-serialize';
 
 class CreateContact extends Component {
   static propTypes = {
@@ -10,12 +11,18 @@ class CreateContact extends Component {
   state = {
     toList: false
   };
-  handleSubmit = user => {
-    this.props.onCreateContact(user).then(() =>
-      this.setState(() => ({
-        toList: true
-      }))
-    );
+  handleSubmit = e => {
+    e.preventDefault();
+    const values = serializeForm(e.target, { hash: true });
+    // console.log(values);
+    if (this.props.onCreateContact) {
+      this.props.onCreateContact(values);
+    }
+    // this.props.onCreateContact(user).then(() =>
+    //   this.setState(() => ({
+    //     toList: true
+    //   }))
+    // );
     // console.log('why is this NOT WORKING!!!😡😩');
   };
   render() {
@@ -27,7 +34,7 @@ class CreateContact extends Component {
         <Link className="close-create-contact" to="/">
           Close
         </Link>
-        <form className="create-contact-form">
+        <form onSubmit={this.handleSubmit} className="create-contact-form">
           <ImageInput
             className="create-contact-avatar-input"
             name="avatarURL"

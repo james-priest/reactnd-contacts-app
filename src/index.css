@@ -51,6 +51,9 @@ body, .app {
   background-repeat: no-repeat;
   border-radius: 50%;
 }
+.create-contact-avatar-input>input[type=file] {
+  cursor: pointer;
+}
 
 .create-contact-details input {
   width: 100%;
@@ -70,8 +73,12 @@ body, .app {
   padding: 10px;
   text-transform: uppercase;
   font-size: inherit;
-  border: none;
+  border: 1px solid #ccc;
   outline: 0;
+}
+.create-contact-details button:active {
+  border: 1px solid #999;
+  /* color: #666; */
 }
 
 /* ListContacts */
