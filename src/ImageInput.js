@@ -110,6 +110,7 @@ class ImageInput extends React.Component {
             height: '100%',
             opacity: 0
           }}
+          required
         />
       </div>
     );

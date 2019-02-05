@@ -22,8 +22,11 @@ export const remove = contact =>
     .then(res => res.json())
     .then(data => data.contact);
 
-export const create = body =>
-  fetch(`${api}/contacts`, {
+export const create = body => {
+  // console.log('pre-stringify', body);
+  // console.log('stringify', JSON.stringify(body));
+
+  return fetch(`${api}/contacts`, {
     method: 'POST',
     headers: {
       ...headers,
@@ -31,3 +34,4 @@ export const create = body =>
     },
     body: JSON.stringify(body)
   }).then(res => res.json());
+};

@@ -26,9 +26,15 @@ class App extends Component {
       console.log(contact); // <- removed contact
     });
   };
-  addContact = contact => {
-    console.log('Contact added', contact);
-    return new Promise((resolve, reject) => resolve());
+  createContact = contact => {
+    // console.log('serlialized', contact);
+    ContactsAPI.create(contact).then(contact => {
+      // console.log('returned', contact);
+      this.setState(prevContacts => ({
+        // contacts: [...prevContacts.contacts, contact]
+        contacts: prevContacts.contacts.concat(contact)
+      }));
+    });
   };
   render() {
     return (
@@ -45,7 +51,14 @@ class App extends Component {
         />
         <Route
           path="/create"
-          render={() => <CreateContact onCreateContact={this.addContact} />}
+          render={({ history }) => (
+            <CreateContact
+              onCreateContact={contact => {
+                this.createContact(contact);
+                history.push('/');
+              }}
+            />
+          )}
         />
       </div>
     );

@@ -50,6 +50,7 @@ body, .app {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
+  cursor: pointer;
 }
 .create-contact-avatar-input>input[type=file] {
   cursor: pointer;
@@ -66,19 +67,18 @@ body, .app {
   outline: 0;
 }
 
-
 .create-contact-details button {
   margin-top: 20px;
   background: #ccc;
+  border: 1px solid #aaaaaa;
   padding: 10px;
   text-transform: uppercase;
   font-size: inherit;
-  border: 1px solid #ccc;
   outline: 0;
 }
-.create-contact-details button:active {
-  border: 1px solid #999;
-  /* color: #666; */
+
+.create-contact-details button:hover {
+  background-color: #c1c1c1;
 }
 
 /* ListContacts */
@@ -139,6 +139,10 @@ body, .app {
   padding: 20px;
   background: white;
   display: flex;
+}
+
+.red {
+  color: rgb(228, 39, 39);
 }
 
 @media (min-width: 600px) {
